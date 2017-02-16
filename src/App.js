@@ -27,30 +27,14 @@ var MainLayout = React.createClass({
   }
 })
 
-var SearchLayout = React.createClass({
-  render: function() {
-    return (
-      <div className="search">
-        <header className="search-header"></header>
-        <div className="results">
-          {this.props.children}
-        </div>
-        <div className="search-footer pagination"></div>
-      </div>
-      )
-  }
-})
-
 class App extends React.Component {
 	render() {
 		return (
 			<Router history={browserHistory}>
 				<Route path="/" component={MainLayout}>
 					<IndexRoute component={Home} />
-					<Route component={SearchLayout}>
-						<Route path="users" component={Users} />
-						<Route path="widgets" component={WidgetList} />
-					</Route> 
+					<Route path="users" component={Users} />
+					<Route path="widgets" component={WidgetList} />
 				</Route>
 			</Router>
 		)
