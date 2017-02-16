@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Button, Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
-class UserList extends React.Component {
+class UserList extends React.Component {	
 	render() {		
 		return (
 			<Grid className="user-list">
@@ -16,14 +15,31 @@ class UserList extends React.Component {
     	)
 	}
 	createListItem(user) {
-		
 		return (
 			<Row key={user.id} className="user">
 				<Col xs={6}>
-					<Link to={'/users/' + user.slug}>{user.name}</Link>
+					<a href="#" onClick={this.openUserModal.bind(this, user.id)}>{user.name}</a>
 				</Col>
 			</Row>
 		)
+	}
+	openUserModal(userID) {
+console.log('open user modal');		
+		//Modal.open();
+		//<Modal />
+		//return (<Modal />)
+/*
+		fetch('http://koksijde.dev/wp-json/wp/v2/users')
+			.then(response => response.json())
+			.then(json => {
+				this.setState({
+					users: json
+				})
+			})
+		.catch((error) => {
+			console.error(error);
+		});	
+*/	
 	}
 }
 

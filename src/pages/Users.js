@@ -1,6 +1,6 @@
 import React from 'react';
-
 import UserList from './views/UserList';
+import AppModal from '../components/modal';
 
 class Users extends React.Component {
 	constructor(props) {
@@ -22,7 +22,10 @@ class Users extends React.Component {
 	}
 	render() {			
 		return (
-			<UserList users={this.state.users} />
+			<div>
+				<UserList users={this.state.users} />
+				<AppModal />
+			</div>
 		)
 	}
 }
