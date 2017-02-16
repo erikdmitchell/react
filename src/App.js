@@ -9,6 +9,7 @@ import styles from './styles/app.css';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './pages/Home';
+import WidgetList from './pages/Widgets';
 
 var MainLayout = React.createClass({
   render: function() {
@@ -64,18 +65,6 @@ var UserListContainer = React.createClass({
 	toggleActive() {
 console.log('toogle active');		
 	}
-})
-
-var WidgetList = React.createClass({
-  render: function() {
-    return (
-      <ul className="widget-list">
-        <li>Widget 1</li>
-        <li>Widget 2</li>
-        <li>Widget 3</li>
-      </ul>
-      )
-  }
 })
 
 class App extends React.Component {
