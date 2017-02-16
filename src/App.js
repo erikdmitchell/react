@@ -1,22 +1,25 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
+import { Button } from 'react-bootstrap';
 import styles from './app.css';
 
 var MainLayout = React.createClass({
   render: function() {
     return (
       <div className={styles.this}>
-        <header className="primary-header"></header>
-        <aside className="primary-aside">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/users">Users</Link></li>
-            <li><Link to="/widgets">Widgets</Link></li>
-          </ul>
-        </aside>
-        <main>
-          {this.props.children}
-        </main>
+      	<div className="wrapper">
+	        <header className="primary-header"></header>
+	        <nav className="primary-nav">
+	          <ul>
+	            <li><Link to="/">Home</Link></li>
+	            <li><Link to="/users">Users</Link></li>
+	            <li><Link to="/widgets">Widgets</Link></li>
+	          </ul>
+	        </nav>
+	        <main>
+	        	{this.props.children}
+	        </main>
+        </div>
       </div>
       )
   }
@@ -61,7 +64,10 @@ var UserListContainer = React.createClass({
 		});
 	},
 	render() {	
-		return (<UserList users={this.state.users} />);
+		return (<UserList users={this.state.users} toggleActive={this.toggleActive} />);
+	},
+	toggleActive() {
+console.log('toogle active');		
 	}
 })
 
@@ -116,6 +122,7 @@ class UserList extends React.Component {
 		return (
 			<li key={user.id}>
 				<Link to={'/users/' + user.slug}>{user.name}</Link>
+				<Button onClick={this.props.toggleActive}>Toggle Active</Button>
 			</li>
 		)
 	}
