@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
-import { Grid, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import './styles/bootstrap.min.css';
 import './styles/bootstrap-theme.min.css';
@@ -8,6 +8,7 @@ import styles from './styles/app.css';
 
 import Header from './Header';
 import Footer from './Footer';
+import Home from './pages/Home';
 
 var MainLayout = React.createClass({
   render: function() {
@@ -21,16 +22,6 @@ var MainLayout = React.createClass({
 	        
 			<Footer />
 		</div>
-    )
-  }
-})
-
-var Home = React.createClass({
-  render: function() {
-    return (
-    	<Grid>
-	    	<h1>Home Page</h1>
-	    </Grid>
     )
   }
 })
