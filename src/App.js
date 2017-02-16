@@ -1,34 +1,37 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
-import { Button } from 'react-bootstrap';
+import { Grid, Button } from 'react-bootstrap';
+
 import './styles/bootstrap.min.css';
 import './styles/bootstrap-theme.min.css';
 import styles from './styles/app.css';
 
 import Header from './Header';
-//import Body from './Body';
-//import Footer from './Footer';
+import Footer from './Footer';
 
 var MainLayout = React.createClass({
   render: function() {
     return (
-      <div className={styles.this}>
-	    <Header />
-	        
-	        
+      	<div className={styles.this}>
+	    	<Header />
 
-	        
-	        <main>
+	        <div className="main">
 	        	{this.props.children}
-	        </main>
-      </div>
-      )
+	        </div>
+	        
+			<Footer />
+		</div>
+    )
   }
 })
 
 var Home = React.createClass({
   render: function() {
-    return (<h1>Home Page</h1>)
+    return (
+    	<Grid>
+	    	<h1>Home Page</h1>
+	    </Grid>
+    )
   }
 })
 
@@ -85,12 +88,6 @@ var WidgetList = React.createClass({
 })
 
 class App extends React.Component {
-	constructor() {
-		super();
-		this.state = {items: []}
-	}
-	componentWillMount() {
-	}
 	render() {
 		return (
 			<Router history={browserHistory}>
