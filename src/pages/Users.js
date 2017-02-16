@@ -1,7 +1,6 @@
 import React from 'react';
 import UserList from './views/UserList';
-//import AppModal from '../components/modal';
-import { Modal } from 'react-bootstrap';
+import AppModal from '../components/modal';
 
 class Users extends React.Component {
 	constructor(props) {
@@ -26,11 +25,7 @@ class Users extends React.Component {
 			<div>
 				<UserList users={this.state.users} />
 				
-				<Modal ref="payload"
-                       header='header'
-                       body='body'
-                       footer='footer'
-                       />
+				<AppModal />
 			</div>
 		)
 	}

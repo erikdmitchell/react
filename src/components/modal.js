@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 class AppModal extends React.Component {
 	constructor(props, context) {
 		super(props, context);
-console.log(props);
+console.log('construct');
 		this.state = {showModal: false}	
 	}
 	close() {
@@ -14,7 +14,8 @@ console.log(props);
     	this.setState({ showModal: true })
 	}
 	render() {	
-console.log('foo');				
+console.log('foo');	
+console.log(this.state);			
 		return (
       <div>
 
