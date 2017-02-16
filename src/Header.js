@@ -1,15 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router'
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
      
 class Header extends React.Component {
 	render() {
 		return (
-			<Navbar fixedTop inverse toggleNavKey={0}>
-				<Nav right activeKey={0}>
-					<NavItem eventKey={1}><Link to="/">Home</Link></NavItem>
-					<NavItem eventKey={2}><Link to="/users">Users</Link></NavItem>
-					<NavItem eventKey={3}><Link to="/widgets">Widgets</Link></NavItem>
+			<Navbar fixedTop inverse>
+				<Nav>
+					<LinkContainer to="/">
+						<NavItem eventKey={1}>Home</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/users">
+						<NavItem eventKey={2}>Users</NavItem>
+					</LinkContainer>
+					<LinkContainer to="/widgets">
+						<NavItem eventKey={3}>Widgets</NavItem>
+					</LinkContainer>
 				</Nav>
 			</Navbar>
 		)
