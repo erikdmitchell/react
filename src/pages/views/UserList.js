@@ -1,29 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Button } from 'react-bootstrap';
+import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 class UserList extends React.Component {
 	render() {		
 		return (
-			<ul className="user-list">
+			<Grid className="user-list">
 				{Object.keys(this.props.users).map(function(key) {
 					var user = this.props.users[key];
 
 					return this.createListItem(user);
 					
 				}, this)}
-			</ul>
+			</Grid>
     	)
 	}
 	createListItem(user) {
+		
 		return (
-			<li key={user.id}>
-				<Link to={'/users/' + user.slug}>{user.name}</Link>
-				<Button onClick={this.props.toggleActive}>Toggle Active</Button>
-			</li>
+			<Row key={user.id} className="user">
+				<Col xs={6}>
+					<Link to={'/users/' + user.slug}>{user.name}</Link>
+				</Col>
+			</Row>
 		)
 	}
 }
-
 
 export default UserList

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Grid } from 'react-bootstrap';
 
 import UserList from './views/UserList';
 
@@ -23,13 +22,8 @@ class Users extends React.Component {
 	}
 	render() {			
 		return (
-			<Grid>
-				<UserList users={this.state.users} toggleActive={this.toggleActive} />
-			</Grid>
+			<UserList users={this.state.users} />
 		)
-	}
-	toggleActive() {
-console.log('toogle active');		
 	}
 }
 
