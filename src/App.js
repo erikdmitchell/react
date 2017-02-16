@@ -1,25 +1,26 @@
 import React from 'react';
 import { Router, Route, IndexRoute, Link, browserHistory } from 'react-router'
 import { Button } from 'react-bootstrap';
-import styles from './app.css';
+import './styles/bootstrap.min.css';
+import './styles/bootstrap-theme.min.css';
+import styles from './styles/app.css';
+
+import Header from './Header';
+//import Body from './Body';
+//import Footer from './Footer';
 
 var MainLayout = React.createClass({
   render: function() {
     return (
       <div className={styles.this}>
-      	<div className="wrapper">
-	        <header className="primary-header"></header>
-	        <nav className="primary-nav">
-	          <ul>
-	            <li><Link to="/">Home</Link></li>
-	            <li><Link to="/users">Users</Link></li>
-	            <li><Link to="/widgets">Widgets</Link></li>
-	          </ul>
-	        </nav>
+	    <Header />
+	        
+	        
+
+	        
 	        <main>
 	        	{this.props.children}
 	        </main>
-        </div>
       </div>
       )
   }
