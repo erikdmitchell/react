@@ -1,0 +1,8 @@
+.post a,
+.post a:visited {
+	color: blue;
+	text-decoration: none;
+}
+.post a:hover {
+	text-decoration: underline;
+}
