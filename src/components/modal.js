@@ -13,8 +13,7 @@ class AppModal extends React.Component {
 	open() {		
     	this.setState({ showModal: true })
 	}
-	render() {
-console.log(this.props);			
+	render() {			
 		return (
 			<div>
 				<Modal show={this.state.showModal} onHide={this.close.bind(this)}>

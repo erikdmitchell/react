@@ -1,5 +1,6 @@
 import React from 'react';
 import UserList from './views/UserList';
+import UserModalContent from './views/UserModalContent';
 import AppModal from '../components/modal';
 
 class Users extends React.Component {
@@ -29,14 +30,12 @@ class Users extends React.Component {
 		const showModal = this.state.showModal;					
 		
 		let modal=null;
-console.log(this.state);						
-		if (showModal) {
-			modal = <AppModal showModal={showModal} title={this.state.userDetails.name} />
+						
+		if (showModal) {		
+			modal = <AppModal showModal={showModal} title={this.state.userDetails.name} content={<UserModalContent userInfo={this.state.userDetails} />} />
 		}
 		
 		return (
-			
-			
 			<div>
 				<UserList users={this.state.users} showDetails={this.showDetails} />
 
@@ -55,8 +54,7 @@ console.log(this.state);
 			})
 		.catch((error) => {
 			console.error(error);
-		});
-		
+		});	
 	}
 }
 
