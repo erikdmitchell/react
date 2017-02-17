@@ -18,7 +18,7 @@ class UserList extends React.Component {
 		return (
 			<Row key={user.id} className="user">
 				<Col xs={6}>
-					<a href="#">{user.name}</a>
+					<a href="#" onClick={this.props.showDetails.bind(null, user.id)}>{user.name}</a>
 				</Col>
 			</Row>
 		)

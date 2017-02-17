@@ -6,7 +6,11 @@ class Users extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {users: {}}		
+		this.state = {
+			users: {},
+			showModal: false
+		}
+		this.showDetails = this.showDetails.bind(this);	
 	}
 	componentDidMount() {
 		fetch('http://koksijde.dev/wp-json/wp/v2/users')
@@ -20,14 +24,29 @@ class Users extends React.Component {
 			console.error(error);
 		});
 	}
-	render() {			
+	render() {
+		const showModal = this.state.showModal;					
+		
+		let modal=null;
+		
+						
+		if (showModal) {
+			modal = <AppModal showModal={showModal} />
+		}
+		
 		return (
+			
+			
 			<div>
-				<UserList users={this.state.users} />
-				
-				<AppModal />
+				<UserList users={this.state.users} showDetails={this.showDetails} />
+
+				{modal}
 			</div>
 		)
+	}
+	showDetails(userID) {		
+console.log(userID);
+		this.setState({showModal : true});
 	}
 }
 
