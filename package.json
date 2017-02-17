@@ -1,8 +1,7 @@
 {
   "name": "react-app",
   "version": "0.1.0",
-  "homepage": "http://react.dev",
-  "private": true,
+  "homepage": "./",
   "devDependencies": {
     "react-scripts": "0.9.0"
   },
