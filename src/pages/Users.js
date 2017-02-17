@@ -8,7 +8,8 @@ class Users extends React.Component {
 
 		this.state = {
 			users: {},
-			showModal: false
+			showModal: false,
+			userDetails: false
 		}
 		this.showDetails = this.showDetails.bind(this);	
 	}
@@ -28,10 +29,9 @@ class Users extends React.Component {
 		const showModal = this.state.showModal;					
 		
 		let modal=null;
-		
-						
+console.log(this.state);						
 		if (showModal) {
-			modal = <AppModal showModal={showModal} />
+			modal = <AppModal showModal={showModal} title={this.state.userDetails.name} />
 		}
 		
 		return (
@@ -44,9 +44,19 @@ class Users extends React.Component {
 			</div>
 		)
 	}
-	showDetails(userID) {		
-console.log(userID);
-		this.setState({showModal : true});
+	showDetails(userID) {
+		fetch('http://koksijde.dev/wp-json/wp/v2/users/' + userID)
+			.then(response => response.json())
+			.then(json => {
+				this.setState({
+					showModal: true,
+					userDetails: json
+				})
+			})
+		.catch((error) => {
+			console.error(error);
+		});
+		
 	}
 }
 
