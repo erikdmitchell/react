@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import './styles/bootstrap.min.css';
 import './styles/bootstrap-theme.min.css';
+import './styles/font-awesome.min.css';
 import styles from './styles/app.css';
 
 import Header from './Header';

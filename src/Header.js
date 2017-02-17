@@ -8,7 +8,7 @@ class Header extends React.Component {
 			<Navbar fixedTop inverse>
 				<Nav>
 					<IndexLinkContainer to="/">
-						<NavItem eventKey={1}>Home</NavItem>
+						<NavItem eventKey={1}><i className="fa fa-home" aria-hidden="true"></i></NavItem>
 					</IndexLinkContainer>
 					<LinkContainer to="/users">
 						<NavItem eventKey={2}>Users</NavItem>

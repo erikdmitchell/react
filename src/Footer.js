@@ -7,7 +7,7 @@ class Footer extends React.Component {
 			<Grid>
 				<hr />
 				<footer>
-					<p>© Company 2017</p>
+					<p>&copy; Company 2017</p>
 				</footer>
 			</Grid>
 		)
