@@ -10,7 +10,7 @@ class UserModalContent extends React.Component {
 				<Row>
 					
 					<Col xs={2}>
-						<img src={user.avatar_urls[96]} alt="avatar" class="img-responsive" />
+						<img src={user.avatar_urls[96]} alt="avatar" className="img-responsive" />
 					</Col>
 					
 					<Col xs={10}>
