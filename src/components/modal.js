@@ -22,10 +22,10 @@ console.log(this.props);
 						<Modal.Title>{this.props.title}</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						Modal body text/content.
+						{this.props.content}
 					</Modal.Body>
 					<Modal.Footer>
-						<Button onClick={this.close.bind(this)}>Close</Button>
+						<Button onClick={this.close.bind(this)}>{this.props.closeButtonText}</Button>
 					</Modal.Footer>
 				</Modal>
 			</div>
@@ -35,7 +35,9 @@ console.log(this.props);
 
 AppModal.defaultProps= {
 	showModal: false,
-	title: 'Sample Modal Title'
-	}
+	title: 'Sample Modal Title',
+	content: 'Sample modal content goes here.',
+	closeButtonText: 'Close',
+}
 
 export default AppModal
