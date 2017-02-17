@@ -4,9 +4,6 @@ import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
      
 class Header extends React.Component {
 	render() {
-		
-		//const isActive = this.context.router.isActive(this.props.to, this.props.onlyActiveOnIndex)
-	
 		return (
 			<Navbar fixedTop inverse>
 				<Nav>
