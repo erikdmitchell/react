@@ -12,7 +12,7 @@ import WidgetList from './pages/Widgets';
 import Users from './pages/Users';
 
 var MainLayout = React.createClass({
-  render: function() {
+  render() {
     return (
       	<div className={styles.this}>
 	    	<Header />

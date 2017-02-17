@@ -1,15 +1,18 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
      
 class Header extends React.Component {
 	render() {
+		
+		//const isActive = this.context.router.isActive(this.props.to, this.props.onlyActiveOnIndex)
+	
 		return (
 			<Navbar fixedTop inverse>
 				<Nav>
-					<LinkContainer to="/">
+					<IndexLinkContainer to="/">
 						<NavItem eventKey={1}>Home</NavItem>
-					</LinkContainer>
+					</IndexLinkContainer>
 					<LinkContainer to="/users">
 						<NavItem eventKey={2}>Users</NavItem>
 					</LinkContainer>
