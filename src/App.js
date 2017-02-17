@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 
 import './styles/bootstrap.min.css';
 import './styles/bootstrap-theme.min.css';
@@ -31,7 +31,7 @@ var MainLayout = React.createClass({
 class App extends React.Component {
 	render() {
 		return (
-			<Router history={browserHistory}>
+			<Router history={hashHistory}>
 				<Route path="/" component={MainLayout}>
 					<IndexRoute component={Home} />
 					<Route path="users" component={Users} />
