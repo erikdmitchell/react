@@ -6,7 +6,8 @@ class Riders extends React.Component {
 		super(props);
 
 		this.state = {
-			riders: {}
+			riders: {},
+			currentPage: 1,
 		}
 	}
 	componentDidMount() {	
@@ -27,6 +28,12 @@ class Riders extends React.Component {
 				<RidersList riders={this.state.riders} />
 			</div>
 		)
+	}
+	handleClick(event) {
+console.log(event.target);		
+		this.setState({
+			currentPage: Number(event.target.id)
+		});
 	}
 }
 
