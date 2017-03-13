@@ -6,10 +6,12 @@ class Races extends React.Component {
 		super(props);
 
 		this.state = {
-			races: {}
+			races: {},
+			currentPage: 1,
 		}
 	}
-	componentDidMount() {	
+	componentDidMount() {
+console.log('componentDidMount');		
 		fetch('http://uci.dev/wp-json/uci/v1/races')
 			.then(response => response.json())
 			.then(json => {
@@ -21,12 +23,26 @@ class Races extends React.Component {
 			console.error(error);
 		});
 	}
-	render() {				
+	render() {	
+console.log(this.state);					
 		return (
 			<div>
 				<RacesList races={this.state.races} />
+				<a href="#" onClick={this.changePage.bind(this)} id="2">Next</a>
 			</div>
 		)
+	}
+	changePage(event) {	
+		event.preventDefault();
+		
+		this.setState({
+			currentPage: Number(event.target.id)
+		});
+	}
+	componentWillUpdate(nextProps, nextState) {
+console.log('componentWillUpdate');		
+console.log(nextProps);
+console.log(nextState);		
 	}
 }
 
