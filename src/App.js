@@ -9,8 +9,7 @@ import styles from './styles/app.css';
 import Header from './Header';
 import Footer from './Footer';
 import Home from './pages/Home';
-import WidgetList from './pages/Widgets';
-import Users from './pages/Users';
+import Races from './pages/races';
 
 var MainLayout = React.createClass({
   render() {
@@ -34,8 +33,7 @@ class App extends React.Component {
 			<Router history={hashHistory}>
 				<Route path="/" component={MainLayout}>
 					<IndexRoute component={Home} />
-					<Route path="users" component={Users} />
-					<Route path="widgets" component={WidgetList} />
+					<Route path="races" component={Races} />
 				</Route>
 			</Router>
 		)

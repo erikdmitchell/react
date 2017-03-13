@@ -10,11 +10,8 @@ class Header extends React.Component {
 					<IndexLinkContainer to="/">
 						<NavItem eventKey={1}><i className="fa fa-home" aria-hidden="true"></i></NavItem>
 					</IndexLinkContainer>
-					<LinkContainer to="/users">
-						<NavItem eventKey={2}>Users</NavItem>
-					</LinkContainer>
-					<LinkContainer to="/widgets">
-						<NavItem eventKey={3}>Widgets</NavItem>
+					<LinkContainer to="/races">
+						<NavItem eventKey={2}>Races</NavItem>
 					</LinkContainer>
 				</Nav>
 			</Navbar>
