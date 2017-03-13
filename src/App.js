@@ -10,6 +10,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './pages/Home';
 import Races from './pages/races';
+import Riders from './pages/riders';
 
 var MainLayout = React.createClass({
   render() {
@@ -34,6 +35,7 @@ class App extends React.Component {
 				<Route path="/" component={MainLayout}>
 					<IndexRoute component={Home} />
 					<Route path="races" component={Races} />
+					<Route path="riders" component={Riders} />
 				</Route>
 			</Router>
 		)

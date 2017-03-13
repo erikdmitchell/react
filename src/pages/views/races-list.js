@@ -16,7 +16,7 @@ class RacesList extends React.Component {
 	}
 	createListItem(race) {		
 		return (
-			<Row key={race.ID} className="user">
+			<Row key={race.ID} className="race">
 				<Col xs={12}>
 					<a href="#">{race.post_title}</a>
 				</Col>

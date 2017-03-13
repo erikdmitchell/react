@@ -1,20 +1,20 @@
 import React from 'react';
-import RacesList from './views/races-list';
+import RidersList from './views/riders-list';
 
-class Races extends React.Component {
+class Riders extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			races: {}
+			riders: {}
 		}
 	}
 	componentDidMount() {	
-		fetch('http://uci.dev/wp-json/uci/v1/races')
+		fetch('http://uci.dev/wp-json/uci/v1/riders')
 			.then(response => response.json())
 			.then(json => {
 				this.setState({
-					races: json
+					riders: json
 				})
 			})
 		.catch((error) => {
@@ -24,10 +24,10 @@ class Races extends React.Component {
 	render() {				
 		return (
 			<div>
-				<RacesList races={this.state.races} />
+				<RidersList riders={this.state.riders} />
 			</div>
 		)
 	}
 }
 
-export default Races
+export default Riders
