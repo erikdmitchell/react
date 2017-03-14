@@ -1,7 +1,3 @@
 .main {
 	margin-top: 64px;
 }
-
-.user-list .user a.active {
-	background-color: yellow;
-}

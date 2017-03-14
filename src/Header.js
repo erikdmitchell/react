@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
+
+var FontAwesome = require('react-fontawesome');
      
 class Header extends React.Component {
 	render() {
@@ -8,13 +10,13 @@ class Header extends React.Component {
 			<Navbar fixedTop inverse>
 				<Nav>
 					<IndexLinkContainer to="/">
-						<NavItem eventKey={1}><i className="fa fa-home" aria-hidden="true"></i></NavItem>
+						<NavItem eventKey={1}><FontAwesome name='home' /></NavItem>
 					</IndexLinkContainer>
 					<LinkContainer to="/races">
-						<NavItem eventKey={2}>Races</NavItem>
+						<NavItem eventKey={2}><FontAwesome name='flag-checkered' /></NavItem>
 					</LinkContainer>
 					<LinkContainer to="/riders">
-						<NavItem eventKey={3}>Riders</NavItem>
+						<NavItem eventKey={3}><FontAwesome name='users' /></NavItem>
 					</LinkContainer>
 				</Nav>
 			</Navbar>
