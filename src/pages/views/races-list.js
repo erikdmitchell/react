@@ -3,7 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 class RacesList extends React.Component {	
 	render() {	
-console.log(this.props.races);		
+//console.log(this.props.races);		
 		return (
 			<Grid className="races-list">
 				{Object.keys(this.props.races).map(function(key) {

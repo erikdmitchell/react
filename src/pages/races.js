@@ -1,6 +1,6 @@
 import React from 'react';
 import RacesList from './views/races-list';
-import { Pagination } from 'react-bootstrap';
+import { Grid, Pagination } from 'react-bootstrap';
 
 class Races extends React.Component {
 	constructor(props) {
@@ -9,38 +9,35 @@ class Races extends React.Component {
 		this.state = {
 			races: {},
 			activePage: 1,
+			perPage: 15,
+			totalPosts: 0,
 		}
 	}
-	componentDidMount() {
-console.log('componentDidMount');		
-		fetch('http://uci.dev/wp-json/wp/v2/races')
-			.then(response => response.json())
-			.then(json => {
-				this.setState({
-					races: json
-				})
-			})
-		.catch((error) => {
-			console.error(error);
-		});
+	componentDidMount() {		
+		this.loadData(this.state);
 	}
-	render() {						
+	render() {
+		const items=Math.ceil(this.state.totalPosts / this.state.perPage);
+		const maxButtons=6;
+									
 		return (
 			<div>
 				<RacesList races={this.state.races} />
 				
+				<Grid className="races-pagination">
 				<Pagination
 			        prev
 			        next
 			        first
 			        last
-			        ellipsis
+			        ellipsis={false}
 			        boundaryLinks
-			        items={20}
-			        maxButtons={5}
+			        items={items}
+			        maxButtons={maxButtons}
 			        activePage={this.state.activePage}
 			        onSelect={this.changePage.bind(this)} 
 			    />
+			    </Grid>
 
 			</div>
 		)
@@ -51,9 +48,41 @@ console.log('componentDidMount');
 		});	
 	}
 	componentWillUpdate(nextProps, nextState) {
-console.log('componentWillUpdate');		
-//console.log(nextProps);
-console.log(nextState);		
+		if (nextState.activePage !== this.state.activePage) {
+			this.loadData(nextState);
+		}
+	}
+	loadData(state) {		
+		let url='http://uci.dev/wp-json/wp/v2/races?page=' + state.activePage;
+		let totalPosts=0;		
+
+		fetch(url)
+			.then(function (response) {
+				totalPosts=response.headers.get('X-WP-Total');
+				
+				return response.json()				
+			})
+			.then(json => {
+				this.setState({
+					races: json,
+					totalPosts: totalPosts
+				})				
+			})
+		.catch((error) => {
+			console.error(error);
+		});	
+/*
+		fetch(url)
+			.then(response => response.json())
+			.then(json => {
+				this.setState({
+					races: json
+				})
+			})
+		.catch((error) => {
+			console.error(error);
+		});	
+*/	
 	}
 }
 
