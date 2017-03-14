@@ -53,7 +53,7 @@ class Races extends React.Component {
 		}
 	}
 	loadData(state) {		
-		let url='http://uci.dev/wp-json/wp/v2/races?page=' + state.activePage;
+		let url='http://uci.dev/wp-json/uci/v1/races?page=' + state.activePage;
 		let totalPosts=0;		
 
 		fetch(url)

@@ -53,7 +53,7 @@ class Riders extends React.Component {
 		}
 	}
 	loadData(state) {		
-		let url='http://uci.dev/wp-json/wp/v2/riders?page=' + state.activePage;
+		let url='http://uci.dev/wp-json/uci/v1/riders?page=' + state.activePage;
 		let totalPosts=0;		
 
 		fetch(url)
