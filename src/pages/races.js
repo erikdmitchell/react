@@ -1,5 +1,6 @@
 import React from 'react';
 import RacesList from './views/races-list';
+import { Pagination } from 'react-bootstrap';
 
 class Races extends React.Component {
 	constructor(props) {
@@ -7,12 +8,12 @@ class Races extends React.Component {
 
 		this.state = {
 			races: {},
-			currentPage: 1,
+			activePage: 1,
 		}
 	}
 	componentDidMount() {
 console.log('componentDidMount');		
-		fetch('http://uci.dev/wp-json/uci/v1/races')
+		fetch('http://uci.dev/wp-json/wp/v2/races')
 			.then(response => response.json())
 			.then(json => {
 				this.setState({
@@ -23,25 +24,35 @@ console.log('componentDidMount');
 			console.error(error);
 		});
 	}
-	render() {	
-console.log(this.state);					
+	render() {						
 		return (
 			<div>
 				<RacesList races={this.state.races} />
-				<a href="#" onClick={this.changePage.bind(this)} id="2">Next</a>
+				
+				<Pagination
+			        prev
+			        next
+			        first
+			        last
+			        ellipsis
+			        boundaryLinks
+			        items={20}
+			        maxButtons={5}
+			        activePage={this.state.activePage}
+			        onSelect={this.changePage.bind(this)} 
+			    />
+
 			</div>
 		)
 	}
-	changePage(event) {	
-		event.preventDefault();
-		
+	changePage(pageNum) {		
 		this.setState({
-			currentPage: Number(event.target.id)
-		});
+			activePage: Number(pageNum)
+		});	
 	}
 	componentWillUpdate(nextProps, nextState) {
 console.log('componentWillUpdate');		
-console.log(nextProps);
+//console.log(nextProps);
 console.log(nextState);		
 	}
 }

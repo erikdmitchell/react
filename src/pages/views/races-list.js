@@ -3,6 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 class RacesList extends React.Component {	
 	render() {	
+console.log(this.props.races);		
 		return (
 			<Grid className="races-list">
 				{Object.keys(this.props.races).map(function(key) {
@@ -16,9 +17,9 @@ class RacesList extends React.Component {
 	}
 	createListItem(race) {		
 		return (
-			<Row key={race.ID} className="race">
+			<Row key={race.id} className="race">
 				<Col xs={12}>
-					<a href="#">{race.post_title}</a>
+					<a href="#">{race.title.rendered}</a>
 				</Col>
 			</Row>
 		)
