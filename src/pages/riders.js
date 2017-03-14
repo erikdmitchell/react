@@ -1,5 +1,6 @@
 import React from 'react';
 import RidersList from './views/riders-list';
+import { Grid, Pagination } from 'react-bootstrap';
 
 class Riders extends React.Component {
 	constructor(props) {
@@ -7,33 +8,69 @@ class Riders extends React.Component {
 
 		this.state = {
 			riders: {},
-			currentPage: 1,
+			activePage: 1,
+			perPage: 15,
+			totalPosts: 0,
 		}
 	}
-	componentDidMount() {	
-		fetch('http://uci.dev/wp-json/uci/v1/riders')
-			.then(response => response.json())
-			.then(json => {
-				this.setState({
-					riders: json
-				})
-			})
-		.catch((error) => {
-			console.error(error);
-		});
+	componentDidMount() {		
+		this.loadData(this.state);
 	}
-	render() {				
+	render() {
+		const items=Math.ceil(this.state.totalPosts / this.state.perPage);
+		const maxButtons=6;
+									
 		return (
 			<div>
 				<RidersList riders={this.state.riders} />
+				
+				<Grid className="riders-pagination">
+				<Pagination
+			        prev
+			        next
+			        first
+			        last
+			        ellipsis={false}
+			        boundaryLinks
+			        items={items}
+			        maxButtons={maxButtons}
+			        activePage={this.state.activePage}
+			        onSelect={this.changePage.bind(this)} 
+			    />
+			    </Grid>
+
 			</div>
 		)
 	}
-	handleClick(event) {
-console.log(event.target);		
+	changePage(pageNum) {		
 		this.setState({
-			currentPage: Number(event.target.id)
-		});
+			activePage: Number(pageNum)
+		});	
+	}
+	componentWillUpdate(nextProps, nextState) {
+		if (nextState.activePage !== this.state.activePage) {
+			this.loadData(nextState);
+		}
+	}
+	loadData(state) {		
+		let url='http://uci.dev/wp-json/wp/v2/riders?page=' + state.activePage;
+		let totalPosts=0;		
+
+		fetch(url)
+			.then(function (response) {
+				totalPosts=response.headers.get('X-WP-Total');
+				
+				return response.json()				
+			})
+			.then(json => {
+				this.setState({
+					riders: json,
+					totalPosts: totalPosts
+				})				
+			})
+		.catch((error) => {
+			console.error(error);
+		});		
 	}
 }
 

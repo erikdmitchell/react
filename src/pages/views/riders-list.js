@@ -7,7 +7,6 @@ class RidersList extends React.Component {
 			<Grid className="riders-list">
 				{Object.keys(this.props.riders).map(function(key) {
 					var rider = this.props.riders[key];
-
 					return this.createListItem(rider);
 					
 				}, this)}
@@ -16,9 +15,9 @@ class RidersList extends React.Component {
 	}
 	createListItem(rider) {		
 		return (
-			<Row key={rider.ID} className="rider">
+			<Row key={rider.id} className="rider">
 				<Col xs={12}>
-					<a href="#">{rider.post_title}</a>
+					<a href="#">{rider.title.rendered}</a>
 				</Col>
 			</Row>
 		)

@@ -70,19 +70,7 @@ class Races extends React.Component {
 			})
 		.catch((error) => {
 			console.error(error);
-		});	
-/*
-		fetch(url)
-			.then(response => response.json())
-			.then(json => {
-				this.setState({
-					races: json
-				})
-			})
-		.catch((error) => {
-			console.error(error);
-		});	
-*/	
+		});
 	}
 }
 

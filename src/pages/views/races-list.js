@@ -2,8 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 class RacesList extends React.Component {	
-	render() {	
-//console.log(this.props.races);		
+	render() {			
 		return (
 			<Grid className="races-list">
 				{Object.keys(this.props.races).map(function(key) {
