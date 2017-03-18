@@ -4,7 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 class SingleRace extends React.Component {	
 	render() {
 		const race=this.props.race;
-console.log(race);		
+		
 		return (
 			<Grid className="race">
 				<Row className="race-title">
