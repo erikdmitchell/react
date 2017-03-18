@@ -1,39 +1,40 @@
 import React from 'react';
-//import RacesList from './views/races-list';
-import { } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Race extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			races: {},
+			race: {},
 		}
 	}
 	componentDidMount() {		
-		//this.loadData(this.state);
+		this.loadData();
 	}
-	render() {				
+	render() {	
+		const race=this.state.race;
+console.log(race);			
 		return (
-			<div>
-				Race
-			</div>
-		)
+			<Grid className="race">
+				<Row key={race.id} className="race-name">
+				<Col xs={12}>
+					{race.title.rendered}
+				</Col>
+			</Row>
+			</Grid>
+    	)
 	}
-	loadData(state) {		
-		let url='http://uci.dev/wp-json/uci/v1/races?page=' + state.activePage;
-		let totalPosts=0;		
+	loadData() {	
+		let url='http://uci.dev/wp-json/uci/v1/races/' + this.props.params.raceId;		
 
 		fetch(url)
 			.then(function (response) {
-				totalPosts=response.headers.get('X-WP-Total');
-				
 				return response.json()				
 			})
 			.then(json => {
 				this.setState({
-					races: json,
-					totalPosts: totalPosts
+					race: json
 				})				
 			})
 		.catch((error) => {

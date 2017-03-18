@@ -27,14 +27,3 @@ class RacesList extends React.Component {
 }
 
 export default RacesList
-
-/*
-	<Link to="/race/1">{race.title.rendered}</Link>
-<LinkContainer to={{ pathname: '/foo', query: { bar: 'baz' } }}>
-  <Button>Foo</Button>
-</LinkContainer>
-
-<LinkContainer to="/races">
-						<NavItem eventKey={2}><FontAwesome name='flag-checkered' /></NavItem>
-					</LinkContainer>
-*/
