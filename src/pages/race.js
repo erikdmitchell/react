@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import SingleRace from './views/single-race';
 
 class Race extends React.Component {
 	constructor(props) {
@@ -7,39 +7,40 @@ class Race extends React.Component {
 
 		this.state = {
 			race: {},
+			ready: false
 		}
 	}
-	componentWillMount() {	
-console.log('cwm');			
-		var data=this.loadData();
-console.log(data);
-		//this.setState({race : data});		
+	componentDidMount() {		
+		this.getRace();
 	}
-	render() {	
-		const race=this.state.race;
-console.log(this.state.race);			
-		return (
-			<Grid className="race">
-				<Row key={race.id} className="race-name">
-				<Col xs={12}>
-				</Col>
-			</Row>
-			</Grid>
-    	)
+	render() {		
+		if (!this.state.ready) {
+			return(<div />);			
+		} else {
+			return (
+				<div>
+					<SingleRace race={this.state.race} />
+				</div>
+	    	)
+    	}
 	}
-	loadData() {	
+	getRace() {			
 		let url='http://uci.dev/wp-json/uci/v1/races/' + this.props.params.raceId;		
 
 		fetch(url)
 			.then(response => response.json())
-			.then(json => {
-console.log(json);				
+			.then(json => {			
+				this.setRace(json);
 			})
 		.catch((error) => {
 			console.error(error);
+		});		
+	}
+	setRace(race) {
+		this.setState({
+			race : race,
+			ready : true
 		});
-console.log(json);
-console.log(data);		
 	}
 }
 
