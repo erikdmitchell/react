@@ -1,3 +1,15 @@
 .main {
-	margin-top: 64px;
+	margin-top: 62px;
+}
+
+.navbar-nav>li {
+    float: left;
+}
+.navbar-nav .fa {
+	font-size: 24px;
+}
+
+.riders-list,
+.races-list {
+	padding-top: 10px;
 }
