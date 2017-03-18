@@ -9,17 +9,19 @@ class Race extends React.Component {
 			race: {},
 		}
 	}
-	componentDidMount() {		
-		this.loadData();
+	componentWillMount() {	
+console.log('cwm');			
+		var data=this.loadData();
+console.log(data);
+		//this.setState({race : data});		
 	}
 	render() {	
 		const race=this.state.race;
-console.log(race);			
+console.log(this.state.race);			
 		return (
 			<Grid className="race">
 				<Row key={race.id} className="race-name">
 				<Col xs={12}>
-					{race.title.rendered}
 				</Col>
 			</Row>
 			</Grid>
@@ -29,17 +31,15 @@ console.log(race);
 		let url='http://uci.dev/wp-json/uci/v1/races/' + this.props.params.raceId;		
 
 		fetch(url)
-			.then(function (response) {
-				return response.json()				
-			})
+			.then(response => response.json())
 			.then(json => {
-				this.setState({
-					race: json
-				})				
+console.log(json);				
 			})
 		.catch((error) => {
 			console.error(error);
 		});
+console.log(json);
+console.log(data);		
 	}
 }
 
