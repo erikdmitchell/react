@@ -13,3 +13,13 @@
 .races-list {
 	padding-top: 10px;
 }
+
+.race .race-results .result {
+	padding-bottom: 3px;
+}
+.race .race-results .result:nth-child(odd) {
+	background-color: #eee;
+}
+.race .header {
+	font-weight: bold;
+}
